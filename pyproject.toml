@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codex-github-mcp"
+version = "0.1.0"
+description = "Remote MCP server for atomic GitHub repository edits, branching, and pull requests"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "Sergey Ionov" }
+]
+dependencies = [
+  "fastmcp>=2.10.0",
+  "httpx>=0.28.1",
+  "pydantic>=2.11.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+]
+
+[project.scripts]
+codex-github-mcp = "codex_github_mcp.server:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
