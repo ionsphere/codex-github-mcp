@@ -1,0 +1,55 @@
+{
+  "_comment": "Copy the relevant block into your claude_desktop_config.json",
+  "_locations": {
+    "Windows": "%APPDATA%\\Claude\\claude_desktop_config.json",
+    "macOS":   "~/Library/Application Support/Claude/claude_desktop_config.json",
+    "Linux":   "~/.config/claude/claude_desktop_config.json"
+  },
+
+  "mcpServers": {
+
+    "github-node-direct": {
+      "_comment": "Option A: Call node directly. Works on all platforms.",
+      "command": "node",
+      "args": [
+        "C:\\path\\to\\codex-github-mcp\\dist\\index.js",
+        "--transport", "stdio"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "ghp_your_token_here"
+      }
+    },
+
+    "github-windows-bat": {
+      "_comment": "Option B: Windows batch launcher — reads .env automatically.",
+      "command": "cmd",
+      "args": ["/c", "C:\\path\\to\\codex-github-mcp\\start.bat"],
+      "env": {
+        "GITHUB_TOKEN": "ghp_your_token_here"
+      }
+    },
+
+    "github-unix-sh": {
+      "_comment": "Option C: Unix/macOS shell launcher — reads .env automatically.",
+      "command": "/bin/bash",
+      "args": ["/path/to/codex-github-mcp/start.sh"],
+      "env": {
+        "GITHUB_TOKEN": "ghp_your_token_here"
+      }
+    },
+
+    "github-enterprise": {
+      "_comment": "Option D: GitHub Enterprise Server",
+      "command": "node",
+      "args": [
+        "/path/to/codex-github-mcp/dist/index.js",
+        "--transport", "stdio",
+        "--api-url", "https://github.your-company.com/api/v3"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "ghp_your_enterprise_token_here"
+      }
+    }
+
+  }
+}
